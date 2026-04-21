@@ -232,7 +232,6 @@ Figma：<https://www.figma.com/design/U9PImidd3whRsqqyX9LH8d/%E7%94%BB%E9%9D%A2%
 
 ### ER図
 https://gyazo.com/65021007a086c9bf772f37deadfa6a93
-[![Image from Gyazo](https://i.gyazo.com/65021007a086c9bf772f37deadfa6a93.png)](https://gyazo.com/65021007a086c9bf772f37deadfa6a93)
 
 ### 本サービスの概要（700文字以内）
 このサービスは、レシピを保存するだけでなく、料理をするたびに加えた工夫や調整内容を記録し、改良履歴として蓄積できるアプリです。
@@ -272,9 +271,10 @@ https://gyazo.com/65021007a086c9bf772f37deadfa6a93
 - id : integer / 主キー。自動採番
 - user_id : integer / 外部キー。作成したユーザーのid（必須）
 - title : string / レシピ名（必須）
-- created_at : datetime / レコード作成日時（Rails自動管理）
 - ingredients : text / 元レシピの材料。改良前のベースとして参照される
 - steps : text / 元レシピの手順。改良前のベースとして参照される
+- created_at : datetime / レコード作成日時（Rails自動管理）
+- updated_at : datetime / レコード更新日時（Rails自動管理）
 
 #### recipe_versions
 - id : integer / 主キー。自動採番
@@ -287,7 +287,6 @@ https://gyazo.com/65021007a086c9bf772f37deadfa6a93
 - image : string / ActiveStorageの添付ファイル識別子
 - created_at : datetime / レコード作成日時（Rails自動管理）
 - updated_at : datetime / レコード更新日時（Rails自動管理）
-- 
 
 ### ER図の注意点
 - [x] 最新のER図スクリーンショットがPRに掲載されているか
