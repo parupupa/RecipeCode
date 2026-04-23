@@ -231,7 +231,7 @@ Figma：<https://www.figma.com/design/U9PImidd3whRsqqyX9LH8d/%E7%94%BB%E9%9D%A2%
 
 
 ### ER図
-https://gyazo.com/65021007a086c9bf772f37deadfa6a93
+https://gyazo.com/879e047e8f70440f2ab63742aa5bc134
 
 ### 本サービスの概要（700文字以内）
 このサービスは、レシピを保存するだけでなく、料理をするたびに加えた工夫や調整内容を記録し、改良履歴として蓄積できるアプリです。
