@@ -83,4 +83,5 @@ production:
   <<: *default
   database: RecipeCode_production
   username: RecipeCode
-  password: <%= ENV["RECIPECODE_DATABASE_PASSWORD"] %>
+  password: <%= ENV["RECIPECODE_DATABASE_PASSWORD"]
+  url: <%= ENV["DATABASE_URL"] %>
