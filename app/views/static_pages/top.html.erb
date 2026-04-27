@@ -1,0 +1,35 @@
+<main>
+  <% if notice.present? %>
+    <p><%= notice %></p>
+  <% end %>
+
+  <% if alert.present? %>
+    <p><%= alert %></p>
+  <% end %>
+
+  <section>
+    <h1>RecipeCode</h1>
+    <p>
+      レシピの改良履歴を記録し、自分に合ったレシピを育てていくアプリです。
+    </p>
+  </section>
+
+  <section>
+    <h2>できること</h2>
+    <ul>
+      <li>レシピを保存できます</li>
+      <li>調理ごとの変更点を記録できます</li>
+      <li>過去の改良履歴を確認できます</li>
+    </ul>
+  </section>
+
+  <section>
+    <%= link_to "ログイン", new_user_session_path %>
+    <%= link_to "新規登録", new_user_registration_path %>
+  </section>
+
+  <footer>
+    <%= link_to "利用規約", terms_path %>
+    <%= link_to "プライバシーポリシー", privacy_path %>
+  </footer>
+</main>
