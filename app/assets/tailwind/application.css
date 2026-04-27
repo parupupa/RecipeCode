@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer components {
+  .btn {
+    @apply inline-block rounded px-4 py-2 font-semibold text-center;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white;
+  }
+
+  .btn-secondary {
+    @apply border border-gray-300 bg-white text-gray-700;
+  }
+
+  .input {
+    @apply w-full rounded border border-gray-300 px-3 py-2;
+  }
+
+  .page-container {
+    @apply mx-auto max-w-screen-sm px-4 py-8;
+  }
+}
