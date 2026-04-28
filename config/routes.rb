@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # get 'static_pages/top'
   # get 'static_pages/terms'
   # get 'static_pages/privacy'
