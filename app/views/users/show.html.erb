@@ -13,7 +13,9 @@
   <li>
     <%= link_to "登録情報を変更する", edit_user_registration_path %>
   </li>
-
+  <li>
+    <%= link_to "アカウントを削除する", account_deletion_path %>
+  </li>
   <li>
     <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
   </li>
