@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipe: one
+  version_name: MyString
+  version_number: 1.5
+  ingredients: MyText
+  steps: MyText
+  memo: MyText
+
+two:
+  recipe: two
+  version_name: MyString
+  version_number: 1.5
+  ingredients: MyText
+  steps: MyText
+  memo: MyText
