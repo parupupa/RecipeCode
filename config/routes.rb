@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   devise_for :users
   # get 'static_pages/top'
   # get 'static_pages/terms'
@@ -12,6 +13,6 @@ Rails.application.routes.draw do
   get "terms", to: "static_pages#terms"
   get "privacy", to: "static_pages#privacy"
 
-  # Devise導入後に有効になる想定
-  # devise_for :users
+  resource :mypage, only: [:show], controller: "users"
+
 end

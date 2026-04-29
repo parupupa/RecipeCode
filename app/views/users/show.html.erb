@@ -1,0 +1,17 @@
+<h1>マイページ</h1>
+
+<p><%= current_user.name %>さん、こんにちは。</p>
+
+<h2>レシピ</h2>
+
+<p>レシピ機能は後続issueで実装予定です。</p>
+
+<ul>
+  <li>
+    <%= link_to "登録情報を変更する", edit_user_registration_path %>
+  </li>
+
+  <li>
+    <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </li>
+</ul>
