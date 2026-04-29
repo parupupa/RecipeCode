@@ -30,6 +30,8 @@
   <section>
     <% if user_signed_in? %>
       <p><%= current_user.name %>さん、ログイン中です</p>
+
+      <%= link_to "マイページ", mypage_path %>
       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "ログイン", new_user_session_path %>
