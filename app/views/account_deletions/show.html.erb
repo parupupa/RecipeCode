@@ -1,0 +1,18 @@
+<h1>アカウント削除</h1>
+
+<p>
+  アカウントを削除すると、登録情報は削除されます。<br>
+  この操作は取り消せません。
+</p>
+
+<p>
+  ユーザー名：<%= current_user.name %><br>
+  メールアドレス：<%= current_user.email %>
+</p>
+
+<%= link_to "削除せずにマイページへ戻る", mypage_path %>
+
+<%= button_to "アカウントを削除する",
+              user_registration_path,
+              method: :delete,
+              data: { turbo_confirm: "本当にアカウントを削除しますか？" } %>
