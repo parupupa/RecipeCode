@@ -11,10 +11,36 @@
   </div>
 <% end %>
 
+<% if @recipe_version&.errors&.any? %>
+  <div>
+    <h2>レシピ内容を確認してください</h2>
+    <ul>
+      <% @recipe_version.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @recipe, local: true do |f| %>
   <div>
     <%= f.label :title, "レシピ名" %><br>
     <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= label_tag "recipe_version[ingredients]", "材料" %><br>
+    <%= text_area_tag "recipe_version[ingredients]", @recipe_version&.ingredients %>
+  </div>
+
+  <div>
+    <%= label_tag "recipe_version[steps]", "手順" %><br>
+    <%= text_area_tag "recipe_version[steps]", @recipe_version&.steps %>
+  </div>
+
+  <div>
+    <%= label_tag "recipe_version[memo]", "メモ" %><br>
+    <%= text_area_tag "recipe_version[memo]", @recipe_version&.memo %>
   </div>
 
   <div>
