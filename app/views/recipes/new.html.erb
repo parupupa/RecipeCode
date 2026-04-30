@@ -1,0 +1,25 @@
+<h1>レシピ作成</h1>
+
+<% if @recipe.errors.any? %>
+  <div>
+    <h2>入力内容を確認してください</h2>
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @recipe, local: true do |f| %>
+  <div>
+    <%= f.label :title, "レシピ名" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.submit "レシピを保存" %>
+  </div>
+<% end %>
+
+<%= link_to "保存せずに戻る", mypage_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'recipes/new'
   get 'account_deletions/show'
   get 'users/show'
   devise_for :users
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
 
   resource :mypage, only: [:show], controller: "users"
   resource :account_deletion, only: [:show], controller: "account_deletions"
+
+  resources :recipes, only: [:new, :create]
 end
