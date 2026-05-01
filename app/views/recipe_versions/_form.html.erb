@@ -12,6 +12,11 @@
 <%= form_with model: [recipe, recipe_version], local: true do |f| %>
 
   <div>
+    <strong>バージョン番号：</strong>
+    <%= recipe_version.version_number %>
+  </div>
+
+  <div>
     <%= f.label :version_name, "バージョン名" %><br>
     <%= f.text_field :version_name %>
   </div>
