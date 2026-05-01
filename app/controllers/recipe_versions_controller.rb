@@ -3,7 +3,13 @@ class RecipeVersionsController < ApplicationController
   before_action :set_recipe
 
   def new
-    @recipe_version = @recipe.recipe_versions.build(version_number: next_version_number)
+    latest_version = @recipe.latest_version
+
+    @recipe_version = @recipe.recipe_versions.build(
+      version_number: next_version_number,
+      ingredients: latest_version&.ingredients,
+      steps: latest_version&.steps
+    )
   end
 
   def create
