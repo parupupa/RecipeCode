@@ -3,11 +3,12 @@ class RecipeVersionsController < ApplicationController
   before_action :set_recipe
 
   def new
-    @recipe_version = @recipe.recipe_versions.build
+    @recipe_version = @recipe.recipe_versions.build(version_number: next_version_number)
   end
 
   def create
     @recipe_version = @recipe.recipe_versions.build(recipe_version_params)
+    @recipe_version.version_number = next_version_number
 
     if @recipe_version.save
       redirect_to recipe_path(@recipe), notice: "改良履歴を保存しました"
@@ -29,6 +30,6 @@ class RecipeVersionsController < ApplicationController
   end
 
   def next_version_number
-    @recipe.recipe_versions.maximum(:version_number).to_f + 1
+    @recipe.recipe_versions.maximum(:version_number).to_i + 1
   end
 end
