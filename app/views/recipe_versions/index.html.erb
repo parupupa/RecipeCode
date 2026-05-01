@@ -1,0 +1,38 @@
+<h1>改良履歴一覧</h1>
+
+<p>レシピ名：<%= @recipe.title %></p>
+
+<%= link_to "改良を記録する", new_recipe_recipe_version_path(@recipe) %>
+<%= link_to "レシピ詳細へ戻る", recipe_path(@recipe) %>
+
+<% if @recipe_versions.any? %>
+  <ul>
+    <% @recipe_versions.each do |recipe_version| %>
+      <li>
+        <% if recipe_version == @recipe.latest_version %>
+          <strong>最新版</strong>
+        <% end %>
+
+        <h2><%= recipe_version.version_name %></h2>
+
+        <p>
+          バージョン番号：<%= recipe_version.version_number %>
+        </p>
+
+        <p>
+          作成日時：<%= l recipe_version.created_at, format: :short %>
+        </p>
+
+        <% if recipe_version.memo.present? %>
+          <p>
+            メモ：<%= simple_format(recipe_version.memo) %>
+          </p>
+        <% end %>
+
+        <p>詳細ページは後続issueで作成予定です</p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>改良履歴はまだありません。</p>
+<% end %>
