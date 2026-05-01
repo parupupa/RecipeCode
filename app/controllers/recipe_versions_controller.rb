@@ -2,6 +2,10 @@ class RecipeVersionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe
 
+  def index
+    @recipe_versions = @recipe.recipe_versions.order(version_number: :desc)
+  end
+
   def new
     latest_version = @recipe.latest_version
 
@@ -17,7 +21,7 @@ class RecipeVersionsController < ApplicationController
     @recipe_version.version_number = next_version_number
 
     if @recipe_version.save
-      redirect_to recipe_path(@recipe), notice: "改良履歴を保存しました"
+      redirect_to recipe_recipe_versions_path(@recipe), notice: "改良履歴を保存しました"
     else
       render :new, status: :unprocessable_entity
     end
