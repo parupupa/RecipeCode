@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @recipes = current_user.recipes.includes(:recipe_versions).order(created_at: :desc)
+  end
+
   def new
     @recipe = Recipe.new
     @recipe_version = RecipeVersion.new
@@ -15,7 +19,7 @@ class RecipesController < ApplicationController
       @recipe_version.save!
     end
 
-    redirect_to mypage_path, notice: "レシピを保存しました"
+    redirect_to recipes_path, notice: "レシピを保存しました"
     
     rescue ActiveRecord::RecordInvalid
       render :new, status: :unprocessable_entity
