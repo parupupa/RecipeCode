@@ -6,7 +6,7 @@
 <% if @recipes.any? %>
   <ul>
     <% @recipes.each do |recipe| %>
-      <% latest_version = recipe.recipe_versions.order(version_number: :desc).first %>
+      <% latest_version = recipe.latest_version %>
 
       <li>
         <h2><%= recipe.title %></h2>
