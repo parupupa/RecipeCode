@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recipe, only: [:show]
+  before_action :set_recipe, only: [:show, :destroy]
 
   def index
     @recipes = current_user.recipes.includes(:recipe_versions).order(created_at: :desc)
@@ -28,6 +28,11 @@ class RecipesController < ApplicationController
     
   rescue ActiveRecord::RecordInvalid
     render :new, status: :unprocessable_entity
+  end
+
+  def destroy
+    @recipe.destroy
+    redirect_to recipes_path, notice: "レシピを削除しました"
   end
 
   private
