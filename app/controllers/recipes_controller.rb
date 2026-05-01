@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @latest_recipe_version = @recipe.recipe_versions.order(version_number: :desc).first
+    @latest_recipe_version = @recipe.latest_version
   end
 
   def new

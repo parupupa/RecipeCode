@@ -2,30 +2,7 @@
 
 <%= link_to "レシピ一覧へ戻る", recipes_path %>
 
-<% if @latest_recipe_version.present? %>
-  <section>
-    <h2>最新版レシピ</h2>
-
-    <p>
-      バージョン名：<%= @latest_recipe_version.version_name %>
-    </p>
-
-    <p>
-      バージョン番号：<%= @latest_recipe_version.version_number %>
-    </p>
-
-    <h3>材料</h3>
-    <p><%= simple_format(@latest_recipe_version.ingredients) %></p>
-
-    <h3>手順</h3>
-    <p><%= simple_format(@latest_recipe_version.steps) %></p>
-
-    <h3>メモ</h3>
-    <p><%= simple_format(@latest_recipe_version.memo) %></p>
-  </section>
-<% else %>
-  <p>まだレシピ内容が登録されていません。</p>
-<% end %>
+<%= render "latest_recipe_version", latest_recipe_version: @latest_recipe_version %>
 
 <section>
   <h2>操作</h2>
