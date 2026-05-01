@@ -9,4 +9,9 @@
 
   <p>改良履歴作成ページは後続issueで作成予定です。</p>
   <p>改良履歴一覧ページは後続issueで作成予定です。</p>
+
+  <%= button_to "このレシピを削除する",
+              recipe_path(@recipe),
+              method: :delete,
+              data: { turbo_confirm: "本当にこのレシピを削除しますか？" } %>
 </section>
