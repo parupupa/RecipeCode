@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   resource :mypage, only: [:show], controller: "users"
   resource :account_deletion, only: [:show], controller: "account_deletions"
 
-  resources :recipes, only: [:index, :new, :create]
+  resources :recipes, only: [:index, :show, :new, :create]
 end
