@@ -1,8 +1,13 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_recipe, only: [:show]
 
   def index
     @recipes = current_user.recipes.includes(:recipe_versions).order(created_at: :desc)
+  end
+
+  def show
+    @latest_recipe_version = @recipe.recipe_versions.order(version_number: :desc).first
   end
 
   def new
@@ -21,11 +26,15 @@ class RecipesController < ApplicationController
 
     redirect_to recipes_path, notice: "レシピを保存しました"
     
-    rescue ActiveRecord::RecordInvalid
-      render :new, status: :unprocessable_entity
+  rescue ActiveRecord::RecordInvalid
+    render :new, status: :unprocessable_entity
   end
 
   private
+
+  def set_recipe
+    @recipe = current_user.recipes.find(params[:id])
+  end
 
   def recipe_params
     params.require(:recipe).permit(:title)
