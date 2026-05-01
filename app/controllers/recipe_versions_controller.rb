@@ -1,9 +1,13 @@
 class RecipeVersionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe
+  before_action :set_recipe_version, only: [:show]
 
   def index
     @recipe_versions = @recipe.recipe_versions.order(version_number: :desc)
+  end
+
+  def show
   end
 
   def new
@@ -31,6 +35,10 @@ class RecipeVersionsController < ApplicationController
 
   def set_recipe
     @recipe = current_user.recipes.find(params[:recipe_id])
+  end
+
+  def set_recipe_version
+    @recipe_version = @recipe.recipe_versions.find(params[:id])
   end
 
   def recipe_version_params
