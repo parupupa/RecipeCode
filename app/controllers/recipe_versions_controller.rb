@@ -1,7 +1,7 @@
 class RecipeVersionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe, only: [:index, :new, :create]
-  before_action :set_recipe_version, only: [:show, :new_from, :destroy]
+  before_action :set_recipe_version, only: [:show, :edit, :update, :new_from, :destroy]
 
   def index
     @recipe_versions = @recipe.recipe_versions.order(version_number: :desc)
@@ -40,6 +40,20 @@ class RecipeVersionsController < ApplicationController
       redirect_to recipe_recipe_versions_path(@recipe), notice: "改良履歴を保存しました"
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @recipe = @recipe_version.recipe
+  end
+
+  def update
+    @recipe = @recipe_version.recipe
+
+    if @recipe_version.update(recipe_version_params)
+      redirect_to recipe_version_path(@recipe_version), notice: "改良履歴を更新しました"
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
