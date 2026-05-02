@@ -22,7 +22,7 @@ class RecipeVersionsController < ApplicationController
   end
 
   def new_from
-    recipe = @recipe_version.recipe
+    @recipe = @recipe_version.recipe
     source_recipe_version = @recipe_version
 
     @recipe_version = @recipe.recipe_versions.build(

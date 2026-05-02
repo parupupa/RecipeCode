@@ -12,6 +12,8 @@
   </head>
 
   <body>
+    <%= render "shared/header" %>
+
     <% if notice %>
       <p><%= notice %></p>
     <% end %>
@@ -20,8 +22,10 @@
       <p><%= alert %></p>
     <% end %>
 
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main>
       <%= yield %>
     </main>
+
+    <%= render "shared/footer" %>
   </body>
 </html>
