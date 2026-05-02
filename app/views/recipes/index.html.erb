@@ -1,8 +1,5 @@
 <h1>レシピ一覧</h1>
 
-<%= link_to "レシピを作成する", new_recipe_path %>
-<%= link_to "マイページへ戻る", mypage_path %>
-
 <% if @recipes.any? %>
   <ul>
     <% @recipes.each do |recipe| %>
