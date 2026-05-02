@@ -46,7 +46,12 @@ class RecipesController < ApplicationController
   end
 
   def initial_recipe_version_params
-    params.require(:recipe_version).permit(:ingredients, :steps, :memo).merge(
+    params.require(:recipe_version).permit(
+      :ingredients,
+      :steps,
+      :memo,
+      images: []
+    ).merge(
       version_name: "初回バージョン",
       version_number: 1.0
     )
