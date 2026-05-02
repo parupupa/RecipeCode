@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   resource :account_deletion, only: [:show], controller: "account_deletions"
 
   resources :recipes, only: [:index, :show, :new, :create, :destroy] do
-    resources :recipe_versions, only: [:index, :show, :new, :create]
+    resources :recipe_versions, only: [:index, :show, :new, :create] do
+      member do
+        get :new_from
+      end
+    end
   end
 end

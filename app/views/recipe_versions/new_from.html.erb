@@ -1,0 +1,7 @@
+<h1>このバージョンから改良</h1>
+
+<p>対象レシピ：<%= @recipe.title %></p>
+
+<%= render "form", recipe: @recipe, recipe_version: @recipe_version %>
+
+<%= link_to "保存せずに戻る", recipe_recipe_versions_path(@recipe) %>
