@@ -22,7 +22,7 @@
   </div>
 <% end %>
 
-<%= form_with model: @recipe, local: true do |f| %>
+<%= form_with model: @recipe, local: true, html: { multipart: true } do |f| %>
   <div>
     <%= f.label :title, "レシピ名" %><br>
     <%= f.text_field :title %>
