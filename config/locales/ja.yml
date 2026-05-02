@@ -10,3 +10,30 @@ ja:
       default: "%Y/%m/%d"
       short: "%m/%d"
       long: "%Y年%m月%d日"
+
+  activerecord:
+    models:
+      user: ユーザー
+      recipe: レシピ
+      recipe_version: 改良履歴
+
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        current_password: 現在のパスワード
+
+      recipe:
+        title: レシピ名
+        user: ユーザー
+
+      recipe_version:
+        recipe: レシピ
+        version_name: バージョン名
+        version_number: バージョン番号
+        ingredients: 材料
+        steps: 手順
+        memo: メモ
+        images: 画像
