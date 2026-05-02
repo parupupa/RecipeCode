@@ -11,6 +11,17 @@ ja:
       short: "%m/%d"
       long: "%Y年%m月%d日"
 
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください"
+      required: "を入力してください"
+      too_short: "は%{count}文字以上で入力してください"
+      too_long: "は%{count}文字以内で入力してください"
+      invalid: "は正しい形式で入力してください"
+      taken: "はすでに使用されています"
+      confirmation: "と%{attribute}の入力が一致しません"
+
   activerecord:
     models:
       user: ユーザー
@@ -37,3 +48,13 @@ ja:
         steps: 手順
         memo: メモ
         images: 画像
+
+    errors:
+      messages:
+        blank: "を入力してください"
+        required: "を入力してください"
+        too_short: "は%{count}文字以上で入力してください"
+        too_long: "は%{count}文字以内で入力してください"
+        invalid: "は正しい形式で入力してください"
+        taken: "はすでに使用されています"
+        confirmation: "と%{attribute}の入力が一致しません"
