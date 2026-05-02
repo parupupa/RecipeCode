@@ -20,6 +20,16 @@
       <h3>メモ</h3>
       <p><%= simple_format(latest_recipe_version.memo) %></p>
     <% end %>
+
+    <% if latest_recipe_version.images.attached? %>
+      <section>
+        <h3>画像</h3>
+
+        <% latest_recipe_version.images.each do |image| %>
+         <%= image_tag image, style: "max-width: 100%; height: auto;" %>
+        <% end %>
+      </section>
+    <% end %>
   </section>
 <% else %>
   <p>まだレシピ内容が登録されていません。</p>
