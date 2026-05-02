@@ -3,7 +3,8 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :destroy]
 
   def index
-    @recipes = current_user.recipes.includes(:recipe_versions).order(created_at: :desc)
+    @q = current_user.recipes.ransack(params[:q])
+    @recipes = @q.result(distinct: true).order(created_at: :desc)
   end
 
   def show
