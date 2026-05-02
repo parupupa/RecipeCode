@@ -21,6 +21,7 @@ ja:
       invalid: "は正しい形式で入力してください"
       taken: "はすでに使用されています"
       confirmation: "と%{attribute}の入力が一致しません"
+      not_saved: "%{resource}を保存できませんでした"
 
   activerecord:
     models:
