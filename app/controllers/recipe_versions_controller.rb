@@ -67,7 +67,13 @@ class RecipeVersionsController < ApplicationController
   end
 
   def recipe_version_params
-    params.require(:recipe_version).permit(:version_name, :ingredients, :steps, :memo)
+    params.require(:recipe_version).permit(
+      :version_name,
+      :ingredients,
+      :steps,
+      :memo,
+      images: []
+    )
   end
 
   def next_version_number
