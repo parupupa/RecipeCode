@@ -1,13 +1,14 @@
 class RecipeVersionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recipe
-  before_action :set_recipe_version, only: [:show, :new_from]
+  before_action :set_recipe, only: [:index, :new, :create]
+  before_action :set_recipe_version, only: [:show, :new_from, :destroy]
 
   def index
     @recipe_versions = @recipe.recipe_versions.order(version_number: :desc)
   end
 
   def show
+    @recipe = @recipe_version.recipe
   end
 
   def new
@@ -21,6 +22,7 @@ class RecipeVersionsController < ApplicationController
   end
 
   def new_from
+    recipe = @recipe_version.recipe
     source_recipe_version = @recipe_version
 
     @recipe_version = @recipe.recipe_versions.build(
@@ -41,6 +43,17 @@ class RecipeVersionsController < ApplicationController
     end
   end
 
+  def destroy
+    recipe = @recipe_version.recipe
+
+    if recipe.recipe_versions.count <= 1
+      redirect_to recipe_recipe_versions_path(recipe), alert: "最後のバージョンは削除できません\n削除する場合はレシピを削除してください"
+      return
+     end
+    @recipe_version.destroy
+    redirect_to recipe_recipe_versions_path(recipe), notice: "改良履歴を削除しました"
+  end
+
   private
 
   def set_recipe
@@ -48,13 +61,13 @@ class RecipeVersionsController < ApplicationController
   end
 
   def set_recipe_version
-    @recipe_version = @recipe.recipe_versions.find(params[:id])
+    @recipe_version = RecipeVersion.joins(:recipe)
+                                   .where(recipes: { user_id: current_user.id })
+                                   .find(params[:id])
   end
 
   def recipe_version_params
-    params.require(:recipe_version).permit(:version_name, :ingredients, :steps, :memo).merge(
-      version_number: next_version_number
-    )
+    params.require(:recipe_version).permit(:version_name, :ingredients, :steps, :memo)
   end
 
   def next_version_number
