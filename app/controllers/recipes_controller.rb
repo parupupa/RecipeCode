@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
       @recipe_version.save!
     end
 
-    redirect_to recipes_path, notice: "レシピを保存しました"
+    redirect_to recipes_path, notice: "レシピを作成しました"
     
   rescue ActiveRecord::RecordInvalid
     render :new, status: :unprocessable_entity
