@@ -37,6 +37,11 @@
   </div>
 
   <div>
+    <%= f.label :images, "画像" %><br>
+    <%= f.file_field :images, multiple: true %>
+  </div>
+
+  <div>
     <%= f.submit "改良を保存する" %>
   </div>
 <% end %>

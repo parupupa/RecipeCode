@@ -44,6 +44,11 @@
   </div>
 
   <div>
+    <%= label_tag "recipe_version[images][]", "画像" %><br>
+    <%= file_field_tag "recipe_version[images][]", multiple: true %>
+  </div>
+
+  <div>
     <%= f.submit "レシピを保存" %>
   </div>
 <% end %>
