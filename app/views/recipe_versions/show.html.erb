@@ -27,6 +27,10 @@
   </section>
 <% end %>
 
-<%= link_to "このバージョンを改良する", new_from_recipe_recipe_version_path(@recipe, @recipe_version) %>
+<%= link_to "このバージョンを改良する", new_from_recipe_version_path(@recipe_version) %>
+<%= button_to "このバージョンを削除",
+              recipe_version_path(@recipe_version),
+              method: :delete,
+              data: { turbo_confirm: "本当にこのバージョンを削除しますか？" } %>
 <%= link_to "改良履歴一覧へ戻る", recipe_recipe_versions_path(@recipe) %>
 <%= link_to "レシピ詳細へ戻る", recipe_path(@recipe) %>
