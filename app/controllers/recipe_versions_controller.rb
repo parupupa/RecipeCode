@@ -1,7 +1,7 @@
 class RecipeVersionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe
-  before_action :set_recipe_version, only: [:show]
+  before_action :set_recipe_version, only: [:show, :new_from]
 
   def index
     @recipe_versions = @recipe.recipe_versions.order(version_number: :desc)
@@ -17,6 +17,16 @@ class RecipeVersionsController < ApplicationController
       version_number: next_version_number,
       ingredients: latest_version&.ingredients,
       steps: latest_version&.steps
+    )
+  end
+
+  def new_from
+    source_recipe_version = @recipe_version
+
+    @recipe_version = @recipe.recipe_versions.build(
+      version_number: next_version_number,
+      ingredients: source_recipe_version.ingredients,
+      steps: source_recipe_version.steps
     )
   end
 
