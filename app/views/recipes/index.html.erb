@@ -3,30 +3,35 @@
 <%= render "search_form", q: @q %>
 
 <% if @recipes.any? %>
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <% latest_version = recipe.latest_version %>
+  <% @recipes.each do |recipe| %>
+    <% latest_version = recipe.latest_version %>
 
-      <li>
-        <h2><%= recipe.title %></h2>
+    <li>
+      <h2>
+        <%= link_to recipe.title, recipe_path(recipe) %>
+      </h2>
 
-        <p>
-          改良履歴数：<%= recipe.recipe_versions.size %>
-        </p>
+      <p>
+        改良履歴数：<%= recipe.recipe_versions.size %>
+      </p>
 
-        <p>
-          最新版作成日：
-          <% if latest_version.present? %>
-            <%= l latest_version.created_at, format: :short %>
-          <% else %>
-            まだありません
-          <% end %>
-        </p>
+      <p>
+        最新版作成日：
+        <% if latest_version.present? %>
+          <%= l latest_version.created_at, format: :short %>
+        <% else %>
+          まだありません
+        <% end %>
+      </p>
 
-          <%= link_to "詳細を見る", recipe_path(recipe) %>
-      </li>
-    <% end %>
-  </ul>
+        <%= link_to "詳細を見る", recipe_path(recipe) %>
+    </li>
+  <% end %>
+
 <% else %>
-  <p>まだレシピがありません。</p>
+  <% if @q.present? && @q.conditions.any? %>
+    <p>検索条件に一致するレシピはありません。</p>
+  <% else %>
+    <p>まだレシピがありません。</p>
+  <% end %>
 <% end %>
