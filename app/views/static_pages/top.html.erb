@@ -1,12 +1,4 @@
 <main>
-  <% if notice.present? %>
-    <p><%= notice %></p>
-  <% end %>
-
-  <% if alert.present? %>
-    <p><%= alert %></p>
-  <% end %>
-
   <section>
     <h1>RecipeCode</h1>
     <p>
@@ -22,25 +14,4 @@
       <li>過去の改良履歴を確認できます</li>
     </ul>
   </section>
-
-  <h1 class="text-3xl font-bold text-blue-600">
-    Tailwind確認
-  </h1>
-
-  <section>
-    <% if user_signed_in? %>
-      <p><%= current_user.name %>さん、ログイン中です</p>
-
-      <%= link_to "マイページ", mypage_path %>
-      <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
-    <% end %>
-  </section>
-
-  <footer>
-    <%= link_to "利用規約", terms_path %>
-    <%= link_to "プライバシーポリシー", privacy_path %>
-  </footer>
 </main>
