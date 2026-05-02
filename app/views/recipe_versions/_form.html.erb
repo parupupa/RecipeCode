@@ -9,7 +9,9 @@
   </div>
 <% end %>
 
-<%= form_with model: [recipe, recipe_version], local: true do |f| %>
+<% form_model = recipe_version.persisted? ? recipe_version : [recipe, recipe_version] %>
+
+<%= form_with model: form_model, local: true do |f| %>
 
   <div>
     <strong>バージョン番号：</strong>
@@ -42,6 +44,6 @@
   </div>
 
   <div>
-    <%= f.submit "改良を保存する" %>
+    <%= f.submit "保存する" %>
   </div>
 <% end %>
