@@ -1,0 +1,11 @@
+<%= search_form_for q, url: recipes_path, method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :title_cont, "レシピ名" %>
+    <%= f.search_field :title_cont, placeholder: "レシピ名で検索" %>
+  </div>
+
+  <div>
+    <%= f.submit "検索" %>
+    <%= link_to "リセット", recipes_path %>
+  </div>
+<% end %>
