@@ -1,47 +1,56 @@
-<h1><%= @recipe_version.version_name %></h1>
-
-<p>レシピ名：<%= @recipe.title %></p>
-
-<p>
-  バージョン番号：<%= @recipe_version.version_number %>
-</p>
-
-<p>
-  作成日時：<%= l @recipe_version.created_at, format: :short %>
-</p>
-
 <section>
-  <h2>材料</h2>
-  <%= simple_format(@recipe_version.ingredients) %>
-</section>
+  <div>
+    <h1><%= @recipe_version.version_name %></h1>
+    <p>レシピ名：<%= @recipe.title %></p>
+  </div>
 
-<section>
-  <h2>手順</h2>
-  <%= simple_format(@recipe_version.steps) %>
-</section>
+  <div>
+    <p>バージョン番号：<%= @recipe_version.version_number %></p>
+    <p>作成日時：<%= l @recipe_version.created_at, format: :short %></p>
+  </div>
 
-<% if @recipe_version.memo.present? %>
-  <section>
-    <h2>メモ</h2>
-    <%= simple_format(@recipe_version.memo) %>
-  </section>
-<% end %>
+  <div>
+    <section>
+      <h2>材料</h2>
+      <%= simple_format(@recipe_version.ingredients) %>
+    </section>
+  
+    <section>
+      <h2>手順</h2>
+      <%= simple_format(@recipe_version.steps) %>
+    </section>
 
-<% if @recipe_version.images.attached? %>
-  <section>
-    <h2>画像</h2>
-
-    <% @recipe_version.images.each do |image| %>
-      <%= image_tag image, style: "max-width: 100%; height: auto;" %>
+    <% if @recipe_version.memo.present? %>
+      <section>
+        <h2>メモ</h2>
+        <%= simple_format(@recipe_version.memo) %>
+      </section>
     <% end %>
-  </section>
-<% end %>
 
-<%= link_to "このバージョンを改良する", new_from_recipe_version_path(@recipe_version) %>
-<%= link_to "この改良履歴を編集する", edit_recipe_version_path(@recipe_version) %>
-<%= button_to "このバージョンを削除",
-              recipe_version_path(@recipe_version),
-              method: :delete,
-              data: { turbo_confirm: "本当にこのバージョンを削除しますか？" } %>
-<%= link_to "改良履歴一覧へ戻る", recipe_recipe_versions_path(@recipe) %>
-<%= link_to "レシピ詳細へ戻る", recipe_path(@recipe) %>
+    <% if @recipe_version.images.attached? %>
+      <section>
+        <h2>画像</h2>
+
+        <div>
+          <% @recipe_version.images.each do |image| %>
+            <%= image_tag image, style: "max-width: 100%; height: auto;" %>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "このバージョンを改良する", new_from_recipe_version_path(@recipe_version) %>
+    <%= link_to "この改良履歴を編集する", edit_recipe_version_path(@recipe_version) %>
+    <%= button_to "このバージョンを削除",
+                  recipe_version_path(@recipe_version),
+                  method: :delete,
+                  data: { turbo_confirm: "本当にこのバージョンを削除しますか？" } %>
+  </div>
+
+  <div>
+    <%= link_to "改良履歴一覧へ戻る", recipe_recipe_versions_path(@recipe) %>
+    <%= link_to "レシピ詳細へ戻る", recipe_path(@recipe) %>
+  </div>
+</section>

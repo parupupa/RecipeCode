@@ -15,31 +15,31 @@
 
   <div>
     <strong>バージョン番号：</strong>
-    <%= recipe_version.version_number %>
+    <span><%= recipe_version.version_number %></span>
   </div>
 
   <div>
-    <%= f.label :version_name, "バージョン名" %><br>
+    <%= f.label :version_name, "バージョン名" %>
     <%= f.text_field :version_name %>
   </div>
 
   <div>
-    <%= f.label :ingredients, "材料" %><br>
+    <%= f.label :ingredients, "材料" %>
     <%= f.text_area :ingredients, rows: 5 %>
   </div>
 
   <div>
-    <%= f.label :steps, "手順" %><br>
+    <%= f.label :steps, "手順" %>
     <%= f.text_area :steps, rows: 5 %>
   </div>
 
   <div>
-    <%= f.label :memo, "メモ" %><br>
+    <%= f.label :memo, "メモ" %>
     <%= f.text_area :memo, rows: 3 %>
   </div>
 
   <div>
-    <%= f.label :images, "画像" %><br>
+    <%= f.label :images, "画像" %>
     <%= f.file_field :images, multiple: true %>
   </div>
 
