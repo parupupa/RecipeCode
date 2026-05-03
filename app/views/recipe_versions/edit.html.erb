@@ -1,7 +1,14 @@
-<h1>改良履歴を編集</h1>
+<section>
+  <div>
+    <h1>改良履歴を編集</h1>
+    <p>対象レシピ：<%= @recipe.title %></p>
+  </div>
 
-<p>対象レシピ：<%= @recipe.title %></p>
+  <div>
+    <%= render "form", recipe: @recipe, recipe_version: @recipe_version %>
+  </div>
 
-<%= render "form", recipe: @recipe, recipe_version: @recipe_version %>
-
-<%= link_to "保存せずに戻る", recipe_version_path(@recipe_version) %>
+  <div>
+    <%= link_to "保存せずに戻る", recipe_version_path(@recipe_version) %>
+  </div>
+</section>

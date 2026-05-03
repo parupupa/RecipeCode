@@ -1,37 +1,54 @@
-<h1>レシピ一覧</h1>
+<section>
+  <div>
+    <h1>レシピ一覧</h1>
+  </div>
 
-<%= render "search_form", q: @q %>
+  <div>
+    <%= render "search_form", q: @q %>
+  </div>
 
-<% if @recipes.any? %>
-  <% @recipes.each do |recipe| %>
-    <% latest_version = recipe.latest_version %>
+  <div>
+    <% if @recipes.any? %>
+      <ul>
+        <% @recipes.each do |recipe| %>
+          <% latest_version = recipe.latest_version %>
 
-    <li>
-      <h2>
-        <%= link_to recipe.title, recipe_path(recipe) %>
-      </h2>
+          <li>
+            <article>
+              <div>
+                <h2>
+                  <%= link_to recipe.title, recipe_path(recipe) %>
+                </h2>
+              </div>
 
-      <p>
-        改良履歴数：<%= recipe.recipe_versions.size %>
-      </p>
+              <div>
+                <p>改良履歴数：<%= recipe.recipe_versions.size %></p>
 
-      <p>
-        最新版作成日：
-        <% if latest_version.present? %>
-          <%= l latest_version.created_at, format: :short %>
-        <% else %>
-          まだありません
+                <p>
+                  最新版作成日：
+                  <% if latest_version.present? %>
+                    <%= l latest_version.created_at, format: :short %>
+                  <% else %>
+                    まだありません
+                  <% end %>
+                </p>
+              </div>
+
+              <div>
+                <%= link_to "詳細を見る", recipe_path(recipe) %>
+              </div>
+            </article>
+          </li>
         <% end %>
-      </p>
-
-        <%= link_to "詳細を見る", recipe_path(recipe) %>
-    </li>
-  <% end %>
-
-<% else %>
-  <% if @q.present? && @q.conditions.any? %>
-    <p>検索条件に一致するレシピはありません。</p>
-  <% else %>
-    <p>まだレシピがありません。</p>
-  <% end %>
-<% end %>
+      </ul>
+    <% else %>
+      <div>
+        <% if @q.present? && @q.conditions.any? %>
+          <p>検索条件に一致するレシピはありません。</p>
+        <% else %>
+          <p>まだレシピがありません。</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

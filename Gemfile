@@ -70,6 +70,8 @@ group :development do
   # gem "spring"
 
   gem "foreman"
+
+  gem "htmlbeautifier"
 end
 
 group :test do
