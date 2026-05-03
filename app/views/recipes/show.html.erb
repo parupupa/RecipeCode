@@ -1,15 +1,21 @@
-<h1><%= @recipe.title %></h1>
-
-<%= render "latest_recipe_version", latest_recipe_version: @latest_recipe_version %>
-
 <section>
-  <h2>操作</h2>
+  <div>
+    <h1><%= @recipe.title %></h1>
+  </div>
 
-  <%= link_to "新しいバージョンを作る", new_recipe_recipe_version_path(@recipe) %>
-  <%= link_to "改良履歴を見る", recipe_recipe_versions_path(@recipe) %>
-
-  <%= button_to "このレシピを削除する",
+  <div>
+    <%= render "latest_recipe_version", latest_recipe_version: @latest_recipe_version %>
+  </div>
+  
+  <section>
+    <h2>操作</h2>
+    <div>
+      <%= link_to "新しいバージョンを作る", new_recipe_recipe_version_path(@recipe) %>
+      <%= link_to "改良履歴を見る", recipe_recipe_versions_path(@recipe) %>
+      <%= button_to "このレシピを削除する",
               recipe_path(@recipe),
               method: :delete,
               data: { turbo_confirm: "本当にこのレシピを削除しますか？" } %>
+    </div>
+  </section>
 </section>
