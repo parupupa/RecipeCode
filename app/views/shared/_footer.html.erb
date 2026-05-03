@@ -1,12 +1,16 @@
-<footer>
-  <div>
-    <nav>
-      <%= link_to "利用規約", terms_path %>
-      <%= link_to "プライバシーポリシー", privacy_path %>
+<footer class="mt-12 border-t border-stone-300 bg-stone-50">
+  <div class="mx-auto flex max-w-5xl flex-col items-center gap-3 px-4 py-6 text-sm">
+    <nav class="flex gap-4">
+      <%= link_to "利用規約",
+                    terms_path,
+                    class: "text-gray-700 hover:text-lime-900" %>
+      <%= link_to "プライバシーポリシー",
+                    privacy_path,
+                    class: "text-gray-700 hover:text-lime-900" %>
     </nav>
   </div>
   
   <div>
-    <p>&copy; RecipeCode</p>
+    <p class="text-gray-600">&copy; RecipeCode</p>
   </div>
 </footer>
