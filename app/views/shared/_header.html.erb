@@ -1,26 +1,45 @@
-<header>
-  <div>
-    <%= link_to "RecipeCode", root_path %>
+<header class="border-b border-stone-300 bg-stone-50">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+    <div>
+      <%= link_to "RecipeCode", root_path, class: "text-xl font-bold tracking-tight text-gray-900 hover:text-lime-500" %>
+    </div>
+
+    <nav>
+      <% if user_signed_in? %>
+      <div  class="flex items-center gap-4 text-sm">
+        <div>
+          <p class="text-gray-600">
+            <%= current_user.name %>さん、ログイン中です
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <%= link_to "マイページ",
+                        mypage_path,
+                        class: "text-gray-700 hover:text-lime-900" %>
+          <%= link_to "レシピ一覧",
+                        recipes_path,
+                        class: "text-gray-700 hover:text-lime-900" %>
+          <%= link_to "レシピ作成",
+                        new_recipe_path,
+                        class: "rounded-md bg-lime-900 px-3 py-2 text-stone-50 hover:bg-lime-950" %>
+          <%= button_to "ログアウト",
+                          destroy_user_session_path,
+                          method: :delete,
+                          form_class: "inline-block",
+                          class: "text-gray-700 hover:text-lime-900" %>
+        </div>
+      </div>
+      <% else %>
+        <div class="flex items-center gap-3 text-sm">
+          <%= link_to "ログイン",
+                      new_user_session_path,
+                      class: "text-gray-700 hover:text-lime-900" %>
+          <%= link_to "新規登録",
+                      new_user_registration_path,
+                      class: "rounded-md bg-lime-900 px-3 py-2 text-stone-50 hover:bg-lime-950" %>
+        </div>
+      <% end %>
+    </nav>
   </div>
-
-  <nav>
-    <% if user_signed_in? %>
-
-      <div>
-        <p><%= current_user.name %>さん、ログイン中です</p>
-      </div>
-
-      <div>
-        <%= link_to "マイページ", mypage_path %>
-        <%= link_to "レシピ一覧", recipes_path %>
-        <%= link_to "レシピ作成", new_recipe_path %>
-        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </div>
-    <% else %>
-      <div>
-        <%= link_to "ログイン", new_user_session_path %>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </div>
-    <% end %>
-  </nav>
 </header>

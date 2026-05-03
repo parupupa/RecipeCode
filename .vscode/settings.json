@@ -7,4 +7,11 @@
     "editor.formatOnSave": false
   },
   "vscode-erb-beautify.executePath": "/Users/asukanai/.rbenv/versions/3.1.4/bin/htmlbeautifier"
+
+  "tailwindCSS.includeLanguages": {
+    "erb": "html"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }
