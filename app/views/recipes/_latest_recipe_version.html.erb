@@ -2,32 +2,43 @@
   <section>
     <h2>最新版レシピ</h2>
 
-    <p>
-      バージョン名：<%= latest_recipe_version.version_name %>
-    </p>
+    <div>
+      <p>バージョン名：<%= latest_recipe_version.version_name %></p>
+      <p>バージョン番号：<%= latest_recipe_version.version_number %></p>
+    </div>
 
-    <p>
-      バージョン番号：<%= latest_recipe_version.version_number %>
-    </p>
+    <section>
+      <h3>材料</h3>
+      <div>
+        <%= simple_format(latest_recipe_version.ingredients) %>
+      </div>
+    </section>
 
-    <h3>材料</h3>
-    <p><%= simple_format(latest_recipe_version.ingredients) %></p>
-
-    <h3>手順</h3>
-    <p><%= simple_format(latest_recipe_version.steps) %></p>
+    <section>
+      <h3>手順</h3>
+      <div>
+        <%= simple_format(latest_recipe_version.steps) %>
+      </div>
+    </section>
 
     <% if latest_recipe_version.memo.present? %>
-      <h3>メモ</h3>
-      <p><%= simple_format(latest_recipe_version.memo) %></p>
+      <section>
+        <h3>メモ</h3>
+        <div>
+          <%= simple_format(latest_recipe_version.memo) %>
+        </div>
+      </section>
     <% end %>
 
     <% if latest_recipe_version.images.attached? %>
       <section>
         <h3>画像</h3>
 
-        <% latest_recipe_version.images.each do |image| %>
-         <%= image_tag image, style: "max-width: 100%; height: auto;" %>
-        <% end %>
+        <div>
+          <% latest_recipe_version.images.each do |image| %>
+            <%= image_tag image, style: "max-width: 100%; height: auto;" %>
+          <% end %>
+        </div>
       </section>
     <% end %>
   </section>

@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.html.erb": "erb"
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": false
+  },
+  "vscode-erb-beautify.executePath": "/Users/asukanai/.rbenv/versions/3.1.4/bin/htmlbeautifier"
+}

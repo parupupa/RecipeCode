@@ -1,56 +1,64 @@
-<h1>レシピ作成</h1>
-
-<% if @recipe.errors.any? %>
+<section>
   <div>
-    <h2>入力内容を確認してください</h2>
-    <ul>
-      <% @recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<% if @recipe_version&.errors&.any? %>
-  <div>
-    <h2>レシピ内容を確認してください</h2>
-    <ul>
-      <% @recipe_version.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_with model: @recipe, local: true, html: { multipart: true } do |f| %>
-  <div>
-    <%= f.label :title, "レシピ名" %><br>
-    <%= f.text_field :title %>
+    <h1>レシピ作成</h1>
   </div>
 
-  <div>
-    <%= label_tag "recipe_version[ingredients]", "材料" %><br>
-    <%= text_area_tag "recipe_version[ingredients]", @recipe_version&.ingredients %>
-  </div>
+  <% if @recipe.errors.any? %>
+    <div>
+      <h2>入力内容を確認してください</h2>
+      <ul>
+        <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @recipe_version&.errors&.any? %>
+    <div>
+      <h2>レシピ内容を確認してください</h2>
+      <ul>
+        <% @recipe_version.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div>
-    <%= label_tag "recipe_version[steps]", "手順" %><br>
-    <%= text_area_tag "recipe_version[steps]", @recipe_version&.steps %>
-  </div>
+    <%= form_with model: @recipe, local: true, html: { multipart: true } do |f| %>
+      <div>
+        <%= f.label :title, "レシピ名" %><br>
+        <%= f.text_field :title %>
+      </div>
 
+      <div>
+        <%= label_tag "recipe_version[ingredients]", "材料" %><br>
+        <%= text_area_tag "recipe_version[ingredients]", @recipe_version&.ingredients %>
+      </div>
+
+      <div>
+        <%= label_tag "recipe_version[steps]", "手順" %><br>
+        <%= text_area_tag "recipe_version[steps]", @recipe_version&.steps %>
+      </div>
+
+      <div>
+        <%= label_tag "recipe_version[memo]", "メモ" %><br>
+        <%= text_area_tag "recipe_version[memo]", @recipe_version&.memo %>
+      </div>
+
+      <div>
+        <%= label_tag "recipe_version[images][]", "画像" %><br>
+        <%= file_field_tag "recipe_version[images][]", multiple: true %>
+      </div>
+
+      <div>
+        <%= f.submit "レシピを保存" %>
+      </div>
+    <% end %>
+  </div>
+  
   <div>
-    <%= label_tag "recipe_version[memo]", "メモ" %><br>
-    <%= text_area_tag "recipe_version[memo]", @recipe_version&.memo %>
+    <%= link_to "保存せずに戻る", mypage_path %>
   </div>
-
-  <div>
-    <%= label_tag "recipe_version[images][]", "画像" %><br>
-    <%= file_field_tag "recipe_version[images][]", multiple: true %>
-  </div>
-
-  <div>
-    <%= f.submit "レシピを保存" %>
-  </div>
-<% end %>
-
-<%= link_to "保存せずに戻る", mypage_path %>
+</section>
