@@ -7,22 +7,31 @@
       <h1 class="text-3xl font-bold tracking-tight">
         <%= @recipe.title %>
       </h1>
-      <span class="inline-block rounded-full border border-stone-300 bg-white px-3 py-1 text-xs text-gray-600">
+      <span class="inline-block rounded-full border border-sky-300 bg-sky-50 px-3 py-1 text-xs text-cyan-800">
         最新版
       </span>
     </div>
     <%= link_to "＋ 新しいバージョンを作る",
                   new_recipe_recipe_version_path(@recipe),
-                  class: "rounded-md border border-gray-300 bg-white px-4 py-2 font-semibold text-gray-900 shadow transition hover:bg-lime-900 hover:text-white" %>
+                  class: "rounded-md border border-lime-600 bg-white px-4 py-2 text-lime-700 shadow transition hover:bg-lime-600 hover:text-white" %>
   </div>
   <div>
     <%= render "latest_recipe_version", latest_recipe_version: @latest_recipe_version %>
   </div>
-  <div class="mt-5">
-    <%= link_to "改良履歴を見る",
-                recipe_recipe_versions_path(@recipe),
-                class: "rounded-md border border-transparent bg-white px-4 py-2 text-gray-600 shadow-sm transition hover:border-gray-400" %>
+  <div class="mt-5 flex justify-between items-center">
+    <div>
+      <%= link_to "レシピ一覧に戻る",
+                  recipes_path,
+                  class: "rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-600 shadow-sm transition hover:border-gray-400" %>
+    </div>
+
+    <div>
+      <%= link_to "改良履歴を見る",
+                  recipe_recipe_versions_path(@recipe),
+                  class: "rounded-md border border-lime-800 bg-white px-4 py-2 text-lime-900 shadow transition hover:bg-lime-800 hover:text-white" %>
+    </div>
   </div>
+
   <div class="mt-4">
     <%= button_to "このレシピを削除する",
                   recipe_path(@recipe),

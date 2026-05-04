@@ -73,18 +73,18 @@
           <%= label_tag "recipe_version[images][]", "画像", class: "block text-sm font-medium text-gray-700" %>
           <%= file_field_tag "recipe_version[images][]",
                              multiple: true,
-                             class: "mt-1 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-gray-600 file:mr-3 file:rounded-md file:border-0 file:bg-zinc-500 file:px-3 file:py-1.5 file:text-sm file:text-white hover:file:bg-zinc-700" %>
+                             class: "mt-1 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-gray-600 file:mr-3 file:rounded-md file:border-0 file:bg-zinc-600 file:px-3 file:py-1.5 file:text-sm file:text-white hover:file:bg-zinc-300" %>
         </div>
 
         <div class="mt-8">
           <%= f.submit "レシピを保存",
-                       class: "w-full rounded-md bg-lime-800 px-4 py-2 text-stone-50 hover:bg-lime-950" %>
+                       class: "w-full rounded-md bg-cyan-600 px-4 py-2 text-stone-50 hover:bg-cyan-500" %>
         </div>
       </div>
     <% end %>
   </div>
   
-  <div>
+  <div class="mt-8">
     <%= link_to "保存せずに戻る",
                 mypage_path,
                 class: "rounded-md bg-white px-4 py-2 text-gray-700 shadow-sm hover:text-gray-300" %>

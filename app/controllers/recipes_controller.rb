@@ -53,8 +53,8 @@ class RecipesController < ApplicationController
       :memo,
       images: []
     ).merge(
-      version_name: "初回バージョン",
-      version_number: 1.0
+      version_name: "元レシピ",
+      version_number: 1
     )
   end
 end
