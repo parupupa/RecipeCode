@@ -1,22 +1,31 @@
-<section class="mx-auto max-w-2xl space-y-3">
-  <p class="text-sm text-gray-600">
-    <span class="font-medium text-gray-900">
-      選択したバージョンから新たなバージョンを作成できます。
-    </span>
-  </p>
-  <div class="border-b border-stone-300 pb-3">
-    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
-      <%= @recipe.title %>
-    </h1>
-  </div>
+<% content_for :body_class do %>
+  bg-white text-gray-900
+<% end %>
 
-  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
-    <%= render "form", recipe: @recipe, recipe_version: @recipe_version %>
-  </div>
+<section class="mx-auto max-w-2xl rounded-lg bg-lime-700 px-1 py-1 shadow-sm">
+  <div class="rounded-lg bg-white px-4 py-4 shadow-sm">
 
-  <div class="mt-5">
-    <%= link_to "保存せずに戻る",
-                recipe_recipe_versions_path(@recipe),
-                class: "rounded-md border-gray-700 border- px-4 py-2 text-gray-700 shadow-sm transition hover:text-gray-700 hover:bg-gray-200" %>
+    <p class="text-sm text-gray-600">
+      <span class="font-medium text-gray-900">
+        選択したバージョンから新たなバージョンを作成できます。
+      </span>
+    </p>
+
+    <div class="flex items-center justify-between border-b border-stone-300 pb-3 mt-2">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+        <%= @recipe.title %>
+      </h1>
+    </div>
+
+    <div class="mt-4 rounded-xl bg-stone-50 p-6 shadow-sm">
+      <%= render "form", recipe: @recipe, recipe_version: @recipe_version %>
+    </div>
+
+    <div class="mt-6">
+      <%= link_to "保存せずに戻る",
+                  recipe_recipe_versions_path(@recipe),
+                  class: "rounded-md border border-gray-700 bg-white px-4 py-2 text-gray-700 shadow-sm transition hover:bg-gray-200 hover:text-gray-700" %>
+    </div>
+
   </div>
 </section>
