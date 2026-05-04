@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
 
   has_many :recipes, dependent: :destroy
+  has_many :recipe_versions, through: :recipes
 end

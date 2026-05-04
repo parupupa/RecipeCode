@@ -1,13 +1,17 @@
-<section>
-  <div>
-    <h1>プライバシーポリシー</h1>
+<section class="mx-auto max-w-2xl space-y-10">
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
+    <h1 class="text-3xl font-bold tracking-tight text-lime-900">
+      プライバシーポリシー
+    </h1>
   </div>
 
-  <div>
-    <p>このページには、後ほどプライバシーポリシーを記載します。</p>
-  </div>
-  
-  <div>
-    <%= link_to "トップページへ戻る", root_path %>
+  <p class="mt-4 leading-7 text-gray-700">
+    このページには、後ほどプライバシーポリシーを記載します。
+  </p>
+
+  <div class="mt-6">
+    <%= link_to "トップページへ戻る",
+                  root_path,
+                  class: "text-gray-700 hover:text-lime-900" %>
   </div>
 </section>

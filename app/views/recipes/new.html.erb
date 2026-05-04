@@ -1,12 +1,20 @@
-<section>
+<section class="mx-auto max-w-2xl space-y-3">
   <div>
-    <h1>レシピ作成</h1>
+    <h2 class="text-sm tracking-tight text-gray-700">
+      新しいレシピを作成できます。初回バージョンとして自動保存されます。
+    </h2>
+    <h1 class="mt-3 border-b border-stone-300 pb-3 text-3xl font-bold tracking-tight text-gray-900">
+      レシピ作成
+    </h1>
   </div>
 
   <% if @recipe.errors.any? %>
-    <div>
-      <h2>入力内容を確認してください</h2>
-      <ul>
+    <div class="rounded-lg bg-stone-50 px-4 py-3 shadow-sm">
+      <h2 class="text-sm font-medium text-lime-900">
+        入力内容を確認してください
+      </h2>
+
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-600">
         <% @recipe.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -15,9 +23,12 @@
   <% end %>
 
   <% if @recipe_version&.errors&.any? %>
-    <div>
-      <h2>レシピ内容を確認してください</h2>
-      <ul>
+    <div class="rounded-lg bg-stone-50 px-4 py-3 shadow-sm">
+      <h2 class="text-sm font-medium text-lime-900">
+        レシピ内容を確認してください
+      </h2>
+
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-600">
         <% @recipe_version.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -25,40 +36,57 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
     <%= form_with model: @recipe, local: true, html: { multipart: true } do |f| %>
-      <div>
-        <%= f.label :title, "レシピ名" %><br>
-        <%= f.text_field :title %>
-      </div>
+      <div class="space-y-4">
+        <div>
+          <%= f.label :title, "レシピ名", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.text_field :title,
+                           class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= label_tag "recipe_version[ingredients]", "材料" %><br>
-        <%= text_area_tag "recipe_version[ingredients]", @recipe_version&.ingredients %>
-      </div>
+        <div>
+          <%= label_tag "recipe_version[ingredients]", "材料", class: "block text-sm font-medium text-gray-700" %>
+          <%= text_area_tag "recipe_version[ingredients]",
+                            @recipe_version&.ingredients,
+                            rows: 8,
+                            class: "mt-1 w-full rounded-lg bg-white px-3 py-4 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= label_tag "recipe_version[steps]", "手順" %><br>
-        <%= text_area_tag "recipe_version[steps]", @recipe_version&.steps %>
-      </div>
+        <div>
+          <%= label_tag "recipe_version[steps]", "手順", class: "block text-sm font-medium text-gray-700" %>
+          <%= text_area_tag "recipe_version[steps]",
+                            @recipe_version&.steps,
+                            rows: 10,
+                            class: "mt-1 w-full rounded-lg bg-white px-3 py-4 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= label_tag "recipe_version[memo]", "メモ" %><br>
-        <%= text_area_tag "recipe_version[memo]", @recipe_version&.memo %>
-      </div>
+        <div>
+          <%= label_tag "recipe_version[memo]", "メモ", class: "block text-sm font-medium text-gray-700" %>
+          <%= text_area_tag "recipe_version[memo]",
+                            @recipe_version&.memo,
+                            rows: 3,
+                            class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= label_tag "recipe_version[images][]", "画像" %><br>
-        <%= file_field_tag "recipe_version[images][]", multiple: true %>
-      </div>
+        <div>
+          <%= label_tag "recipe_version[images][]", "画像", class: "block text-sm font-medium text-gray-700" %>
+          <%= file_field_tag "recipe_version[images][]",
+                             multiple: true,
+                             class: "mt-1 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-gray-600 file:mr-3 file:rounded-md file:border-0 file:bg-zinc-500 file:px-3 file:py-1.5 file:text-sm file:text-white hover:file:bg-zinc-700" %>
+        </div>
 
-      <div>
-        <%= f.submit "レシピを保存" %>
+        <div class="mt-8">
+          <%= f.submit "レシピを保存",
+                       class: "w-full rounded-md bg-lime-800 px-4 py-2 text-stone-50 hover:bg-lime-950" %>
+        </div>
       </div>
     <% end %>
   </div>
   
   <div>
-    <%= link_to "保存せずに戻る", mypage_path %>
+    <%= link_to "保存せずに戻る",
+                mypage_path,
+                class: "rounded-md bg-white px-4 py-2 text-gray-700 shadow-sm hover:text-gray-300" %>
   </div>
 </section>
