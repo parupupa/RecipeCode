@@ -1,44 +1,60 @@
-<section>
-  <div>
-    <h1>新規登録</h1>
+<section class="mx-auto max-w-2xl space-y-5">
+  <div class="border-b border-stone-300 pb-3">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+      新規登録
+    </h1>
   </div>
 
-  <div>
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div>
-        <%= f.label :name, "ユーザー名" %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-      </div>
+      <div class="space-y-4">
+        <div>
+          <%= f.label :name, "ユーザー名", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.text_field :name,
+                           autofocus: true,
+                           autocomplete: "name",
+                           class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, autocomplete: "email" %>
-      </div>
+        <div>
+          <%= f.label :email, "メールアドレス", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.email_field :email,
+                            autocomplete: "email",
+                            class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= f.label :password, "パスワード" %>
+        <div>
+          <%= f.label :password, "パスワード", class: "block text-sm font-medium text-gray-700" %>
 
-        <% if @minimum_password_length %>
-          <p><%= @minimum_password_length %>文字以上で入力してください。</p>
-        <% end %>
+          <% if @minimum_password_length %>
+            <p class="mt-1 text-sm text-gray-600">
+              <%= @minimum_password_length %>文字以上で入力してください。
+            </p>
+          <% end %>
 
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
+          <%= f.password_field :password,
+                               autocomplete: "new-password",
+                               class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= f.label :password_confirmation, "パスワード（確認）" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
+        <div>
+          <%= f.label :password_confirmation, "パスワード（確認）", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.password_field :password_confirmation,
+                               autocomplete: "new-password",
+                               class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
 
-      <div>
-        <%= f.submit "登録する" %>
+        <div>
+          <%= f.submit "登録する",
+                       class: "w-full rounded-md bg-lime-900 px-4 py-2 text-stone-50 hover:bg-lime-950" %>
+        </div>
       </div>
     <% end %>
   </div>
 
-  <div>
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
     <%= render "devise/shared/links" %>
   </div>
 </section>

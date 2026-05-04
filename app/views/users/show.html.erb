@@ -1,20 +1,62 @@
-<section>
-  <div>
-    <h1>マイページ</h1>
+<section class="mx-auto max-w-2xl space-y-6">
+    <h1 class="border-b border-stone-300 pb-3 text-2xl font-bold tracking-tight text-gray-900">
+      マイページ
+    </h1>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div class="flex items-center rounded-lg bg-stone-50 px-4 py-2 shadow-sm text-center gap-5">
+      <p class="text-sm text-gray-500">レシピ数</p>
+      <p class="text-xl font-semibold text-gray-900">
+        <%= current_user.recipes.count %>
+      </p>
+    </div>
+
+    <div class="flex items-center rounded-lg bg-stone-50 px-4 py-2 shadow-sm text-center gap-5">
+      <p class="text-sm text-gray-500">改良履歴数</p>
+      <p class="text-xl font-semibold text-gray-900">
+        <%= current_user.recipe_versions.count %>
+      </p>
+    </div>
   </div>
 
-  <div>
-    <p>ユーザー名：<%= current_user.name %></p>
-    <p>メールアドレス：<%= current_user.email %></p>
+  <div class="rounded-xl bg-stone-50 px-8 py-3 shadow-sm">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-lg font-semibold text-gray-900">
+          <%= current_user.name %>
+        </p>
+        <p class="mt-1 text-sm text-gray-600">
+          <%= current_user.email %>
+        </p>
+      </div>
+      <%= link_to "編集",
+                  edit_user_registration_path,
+                  class: "text-gray-800 hover:text-gray-300" %>
+    </div>
   </div>
-  
-  <div>
-    <ul>
+
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
+    <ul class="space-y-3">
       <li>
-        <%= link_to "登録情報を変更する", edit_user_registration_path %>
+        <%= link_to "レシピを作成する",
+                    new_recipe_path,
+                    class: "text-gray-700 hover:text-gray-300" %>
+      </li>
+
+      <li>
+        <%= link_to "レシピ一覧を見る",
+                    recipes_path,
+                    class: "text-gray-700 hover:text-gray-300" %>
       </li>
       <li>
-        <%= link_to "アカウントを削除する", account_deletion_path %>
+        <%= link_to "登録情報を変更する",
+                    edit_user_registration_path,
+                    class: "text-gray-700 hover:text-gray-300" %>
+      </li>
+      <li>
+        <%= link_to "アカウントを削除する",
+                    account_deletion_path,
+                    class: "text-gray-700 hover:text-red-700" %>
       </li>
     </ul>
   </div>

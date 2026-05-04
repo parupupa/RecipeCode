@@ -1,55 +1,65 @@
-<section>
-  <div>
-    <h1>改良履歴一覧</h1>
-    <p>レシピ名：<%= @recipe.title %></p>
+<section class="mx-auto max-w-2xl space-y-3">
+  <h2 class="text-sm tracking-tight text-gray-700">
+    レシピの改良履歴を一覧できます。
+  </h2>
+  <div class="border-b border-stone-300 pb-3 flex justify-between items-center gap-3">
+    <h1 class="text-2xl font-bold tracking-tight text-gray-900">
+      <%= @recipe.title %>
+    </h1>
+    <%= link_to "＋ 新しいバージョンを作る",
+                new_recipe_recipe_version_path(@recipe),
+                class: "rounded-md border border-gray-300 bg-white px-4 py-2 font-semibold text-gray-900 shadow transition hover:bg-lime-900 hover:text-white" %>
   </div>
-
-  <div>
-    <%= link_to "改良を記録する", new_recipe_recipe_version_path(@recipe) %>
-    <%= link_to "レシピ詳細へ戻る", recipe_path(@recipe) %>
-  </div>
-
-  <div>
+  <div class="rounded-lg bg-stone-50 px-4 py-3 shadow-sm">
     <% if @recipe_versions.any? %>
       <ul>
         <% @recipe_versions.each do |recipe_version| %>
-          <li>
-            <article>
-              <% if recipe_version == @recipe.latest_version %>
-                <div>
-                  <strong>最新版</strong>
+          <li class="flex justify-between items-center border-b border-stone-200 py-4 first:pt-0 last:border-b-0 last:pb-0">
+            <div class="flex-1">
+              <div class="flex items-center gap-6">
+                <div class="flex items-center gap-2">
+                  <h2 class="text-xl font-semibold">
+                    <%= link_to recipe_version.version_name,
+                          recipe_version_path(recipe_version),
+                          class: "text-gray-900 hover:text-gray-300" %>
+                  </h2>
+                  <% if recipe_version == @recipe.latest_version %>
+                    <span class="inline-block rounded-full border border-stone-300 bg-white px-2 py-0.5 text-xs text-gray-600">
+                      最新版
+                    </span>
+                  <% end %>
                 </div>
-              <% end %>
-
-              <div>
-                <h2><%= recipe_version.version_name %></h2>
+                <div class="text-sm text-gray-600">
+                  <span>v<%= recipe_version.version_number %></span>
+                  <span class="mx-2 text-gray-400">/</span>
+                  <span><%= l recipe_version.created_at, format: :short %></span>
+                </div>
               </div>
-
-              <div>
-                <p>
-                  バージョン番号：<%= recipe_version.version_number %>
-                </p>
-                <p>
-                  作成日時：<%= l recipe_version.created_at, format: :short %>
-                </p>
-              </div>
-
               <% if recipe_version.memo.present? %>
-                <div>
-                  <p>メモ：</p>
-                  <div><%= simple_format(recipe_version.memo) %></div>
+                <div class="mt-2 text-sm text-gray-700">
+                  <%= simple_format(recipe_version.memo) %>
                 </div>
               <% end %>
-
-              <div>
-                <%= link_to "詳細を見る", recipe_version_path(recipe_version) %>
-              </div>
-            </article>
+            </div>
+            <div class="flex items-center pl-6">
+              <%= link_to "詳細",
+                    recipe_version_path(recipe_version),
+                    class: "pr-6 text-sm text-gray-600 hover:text-gray-300" %>
+            </div>
           </li>
         <% end %>
       </ul>
     <% else %>
-      <p>改良履歴はまだありません。</p>
+      <div>
+        <p class="text-gray-700">
+          改良履歴はまだありません。
+        </p>
+      </div>
     <% end %>
+  </div>
+  <div class="mt-5">
+    <%= link_to "レシピ詳細へ戻る",
+                  recipe_path(@recipe),
+                  class: "rounded-md border border-transparent bg-white px-4 py-2 text-gray-600 shadow-sm transition hover:border-gray-400" %>
   </div>
 </section>

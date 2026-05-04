@@ -1,47 +1,42 @@
-<% if latest_recipe_version.present? %>
-  <section>
-    <h2>最新版レシピ</h2>
-
-    <div>
-      <p>バージョン名：<%= latest_recipe_version.version_name %></p>
-      <p>バージョン番号：<%= latest_recipe_version.version_number %></p>
-    </div>
-
-    <section>
-      <h3>材料</h3>
-      <div>
-        <%= simple_format(latest_recipe_version.ingredients) %>
-      </div>
+<section>
+  <div class="space-y-3 mt-3 rounded-lg bg-white px-4 py-3 text-gray-600 shadow-sm">
+    <section class="border-b border-stone-200 pb-4 first:pt-0 last:border-b-0">
+      <p class="text-xs text-gray-500">バージョン番号</p>
+      <span class="text-sm text-gray-900">v<%= latest_recipe_version.version_number %></span>
     </section>
-
-    <section>
-      <h3>手順</h3>
-      <div>
+    <section class="border-b border-stone-200 pb-4 first:pt-0 last:border-b-0">
+      <p class="text-xs text-gray-500">バージョン名</p>
+      <span class="text-sm text-gray-900"><%= latest_recipe_version.version_name %></span>
+    </section>
+    <section class="border-b border-stone-200 pb-8 first:pt-0 last:border-b-0">
+      <h2 class="text-sm text-gray-500">材料</h2>
+      <div class="mt-1 leading-7 text-gray-950">
         <%= simple_format(latest_recipe_version.steps) %>
       </div>
     </section>
-
+    <section class="border-b border-stone-200 pb-8 first:pt-0 last:border-b-0">
+      <h2 class="text-sm text-gray-500">手順</h2>
+      <div class="mt-1 leading-7 text-gray-950">
+        <%= simple_format(latest_recipe_version.steps) %>
+      </div>
+    </section>
     <% if latest_recipe_version.memo.present? %>
-      <section>
-        <h3>メモ</h3>
-        <div>
+      <section class="border-b border-stone-200 pb-8 first:pt-0 last:border-b-0">
+        <h2 class="text-sm text-gray-500">メモ</h2>
+        <div class="mt-1 leading-7 text-gray-950">
           <%= simple_format(latest_recipe_version.memo) %>
         </div>
       </section>
     <% end %>
-
     <% if latest_recipe_version.images.attached? %>
-      <section>
-        <h3>画像</h3>
-
-        <div>
+      <section class="rounded-lg bg-white px-4 py-3 text-sm text-gray-600 shadow-sm">
+        <h2 class="text-sm text-gray-500">画像</h2>
+        <div class="space-y-4">
           <% latest_recipe_version.images.each do |image| %>
-            <%= image_tag image, style: "max-width: 100%; height: auto;" %>
+            <%= image_tag image, class: "w-full rounded-lg bg-white shadow-sm" %>
           <% end %>
         </div>
       </section>
     <% end %>
-  </section>
-<% else %>
-  <p>まだレシピ内容が登録されていません。</p>
-<% end %>
+  </div>
+</section>
