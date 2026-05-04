@@ -1,43 +1,45 @@
 <header class="border-b border-stone-300 bg-stone-50">
   <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-    <div>
-      <%= link_to "RecipeCode", root_path, class: "text-xl font-bold tracking-tight text-gray-900 hover:text-lime-500" %>
-    </div>
-
-    <nav>
-      <% if user_signed_in? %>
-      <div  class="flex items-center gap-4 text-sm">
-        <div>
-          <p class="text-gray-600">
-            <%= current_user.name %>さん、ログイン中です
-          </p>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <%= link_to "マイページ",
-                        mypage_path,
-                        class: "text-gray-700 hover:text-lime-900" %>
-          <%= link_to "レシピ一覧",
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to "RecipeCode", recipes_path, class: "text-3xl font-bold tracking-tight text-gray-900 hover:text-zinc-600" %>
+      </div>
+      <nav>
+        <div  class="flex items-center gap-10">
+          <%= link_to mypage_path,
+                        class: "text-zinc-800 hover:text-zinc-300" do %>
+            <div class="flex items-center gap-2">
+              <p class="text-lg font-semibold">
+                <%= current_user.name %>
+              </p>
+              <p class="text-sm">さん</p>
+            </div>
+          <% end %>
+          <div class="flex items-center gap-4 text-sm">
+            <%= link_to "レシピ一覧",
                         recipes_path,
-                        class: "text-gray-700 hover:text-lime-900" %>
-          <%= link_to "レシピ作成",
+                        class: "text-gray-700 hover:text-gray-300" %>
+            <%= link_to "レシピ作成",
                         new_recipe_path,
-                        class: "rounded-md bg-lime-900 px-3 py-2 text-stone-50 hover:bg-lime-950" %>
-          <%= button_to "ログアウト",
+                        class: "text-gray-700 hover:text-gray-300" %>
+            <%= button_to "ログアウト",
                           destroy_user_session_path,
                           method: :delete,
                           form_class: "inline-block",
-                          class: "text-gray-700 hover:text-lime-900" %>
+                          class: "text-gray-700 hover:text-gray-300" %>
+          </div>
         </div>
-      </div>
       <% else %>
+        <div>
+          <%= link_to "RecipeCode", root_path, class: "text-3xl font-bold tracking-tight text-gray-900 hover:text-zinc-600" %>
+        </div>
         <div class="flex items-center gap-3 text-sm">
           <%= link_to "ログイン",
                       new_user_session_path,
-                      class: "text-gray-700 hover:text-lime-900" %>
+                      class: "text-gray-700 hover:text-gray-300" %>
           <%= link_to "新規登録",
                       new_user_registration_path,
-                      class: "rounded-md bg-lime-900 px-3 py-2 text-stone-50 hover:bg-lime-950" %>
+                      class: "text-gray-700 hover:text-gray-300" %>
         </div>
       <% end %>
     </nav>

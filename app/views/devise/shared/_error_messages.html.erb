@@ -1,17 +1,17 @@
 <% if resource.errors.any? %>
-  <div data-turbo-temporary>
-    <h2>
+  <div class="mb-4 rounded-lg bg-stone-50 px-4 py-3 shadow-sm" data-turbo-temporary>
+    <h2 class="text-sm font-medium text-lime-900">
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
                  resource: resource.class.model_name.human.downcase) %>
     </h2>
 
-    <div>
-      <ul>
-        <% resource.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-600">
+      <% resource.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 <% end %>

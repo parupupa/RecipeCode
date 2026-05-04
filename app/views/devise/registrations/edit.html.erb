@@ -1,56 +1,82 @@
-<section>
-  <div>
-    <h1>登録情報を変更する</h1>
+<section class="mx-auto max-w-2xl space-y-3">
+  <div class="border-b border-stone-300 pb-3">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+      登録情報変更
+    </h1>
   </div>
 
-  <div>
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div>
-        <%= f.label :name, "ユーザー名" %>
-        <%= f.text_field :name, autocomplete: "name" %>
-      </div>
-
-      <div>
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div class="space-y-4">
         <div>
-          <p>現在、確認待ちのメールアドレス：<%= resource.unconfirmed_email %></p>
+          <%= f.label :name, "ユーザー名", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.text_field :name,
+                           autocomplete: "name",
+                           class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
         </div>
-      <% end %>
 
-      <div>
-        <%= f.label :password, "新しいパスワード" %>
-        <p>変更しない場合は空欄のままにしてください。</p>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <div>
+          <%= f.label :email, "メールアドレス", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.email_field :email,
+                            autofocus: true,
+                            autocomplete: "email",
+                            class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
 
-        <% if @minimum_password_length %>
-          <p><%= @minimum_password_length %>文字以上で入力してください。</p>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="rounded-lg bg-white px-4 py-3 shadow-sm">
+            <p class="text-sm text-gray-600">
+              現在、確認待ちのメールアドレス：<%= resource.unconfirmed_email %>
+            </p>
+          </div>
         <% end %>
-      </div>
 
-      <div>
-        <%= f.label :password_confirmation, "新しいパスワード（確認）" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
+        <div>
+          <%= f.label :password, "新しいパスワード", class: "block text-sm font-medium text-gray-700" %>
+          <p class="mt-1 text-sm text-gray-600">
+            変更しない場合は空欄のままにしてください。
+          </p>
+          <%= f.password_field :password,
+                               autocomplete: "new-password",
+                               class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
 
-      <div>
-        <%= f.label :current_password, "現在のパスワード" %>
-        <p>変更を保存するために現在のパスワードを入力してください。</p>
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
-      </div>
+          <% if @minimum_password_length %>
+            <p class="mt-1 text-sm text-gray-600">
+              <%= @minimum_password_length %>文字以上で入力してください。
+            </p>
+          <% end %>
+        </div>
 
-      <div>
-        <%= f.submit "変更を保存する" %>
+        <div>
+          <%= f.label :password_confirmation, "新しいパスワード（確認）", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.password_field :password_confirmation,
+                               autocomplete: "new-password",
+                               class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
+
+        <div>
+          <%= f.label :current_password, "現在のパスワード", class: "block text-sm font-medium text-gray-700" %>
+          <p class="mt-1 text-sm text-gray-600">
+            変更を保存するために現在のパスワードを入力してください。
+          </p>
+          <%= f.password_field :current_password,
+                               autocomplete: "current-password",
+                               class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
+
+        <div>
+          <%= f.submit "変更を保存する",
+                       class: "w-full rounded-md bg-lime-900 px-4 py-2 text-stone-50 hover:bg-lime-950" %>
+        </div>
       </div>
     <% end %>
   </div>
 
-  <div>
-    <%= link_to "マイページへ戻る", mypage_path %>
+  <div class="mt-6">
+    <%= link_to "マイページへ戻る",
+                mypage_path,
+                class: "rounded-md border border-transparent bg-white px-4 py-2 text-gray-600 shadow-sm transition hover:border-gray-400" %>
   </div>
 </section>
