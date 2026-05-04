@@ -1,13 +1,14 @@
 <%= search_form_for q, url: recipes_path, method: :get, local: true do |f| %>
-  <div>
-    <div>
-      <%= f.label :title_cont, "レシピ名" %>
-      <%= f.search_field :title_cont, placeholder: "レシピ名で検索" %>
-    </div>
-
-    <div>
-      <%= f.submit "検索" %>
-      <%= link_to "リセット", recipes_path %>
+  <div class="rounded-xl bg-stone-50 p-2 shadow-sm">
+    <div class="flex items-center gap-3">
+      <%= f.search_field :title_cont,
+                           placeholder: "レシピ名で検索",
+                           class: "w-full min-w-0 rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+      <%= f.submit "検索",
+                     class: "rounded-md bg-zinc-700 px-3 py-1.5 text-white  hover:bg-zinc-400" %>
+      <%= link_to "リセット",
+                    recipes_path,
+                    class: "whitespace-nowrap text-sm text-gray-900  hover:text-gray-300" %>
     </div>
   </div>
 <% end %>

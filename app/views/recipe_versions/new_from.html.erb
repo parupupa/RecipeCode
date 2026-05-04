@@ -1,14 +1,22 @@
-<section>
-  <div>
-    <h1>このバージョンから改良</h1>
-    <p>対象レシピ：<%= @recipe.title %></p>
+<section class="mx-auto max-w-2xl space-y-3">
+  <p class="text-sm text-gray-600">
+    <span class="font-medium text-gray-900">
+      選択したバージョンから新たなバージョンを作成できます。
+    </span>
+  </p>
+  <div class="border-b border-stone-300 pb-3">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+      <%= @recipe.title %>
+    </h1>
   </div>
 
-  <div>
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
     <%= render "form", recipe: @recipe, recipe_version: @recipe_version %>
   </div>
 
-  <div>
-    <%= link_to "保存せずに戻る", recipe_recipe_versions_path(@recipe) %>
+  <div class="mt-5">
+    <%= link_to "保存せずに戻る",
+                recipe_recipe_versions_path(@recipe),
+                class: "rounded-md border-gray-700 border- px-4 py-2 text-gray-700 shadow-sm transition hover:text-gray-700 hover:bg-gray-200" %>
   </div>
 </section>

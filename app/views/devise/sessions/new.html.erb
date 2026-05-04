@@ -1,34 +1,40 @@
-<section>
-  <div>
-    <h1>ログイン</h1>
+<section class="mx-auto max-w-2xl  space-y-5">
+  <div class="border-b border-stone-300 pb-3">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+      ログイン
+    </h1>
   </div>
 
-  <div>
+  <div class="rounded-xl bg-stone-50 p-6 shadow-sm">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div>
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div>
-        <%= f.label :password, "パスワード" %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
+      <div class="space-y-4">
         <div>
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, "ログイン状態を保持する" %>
+          <%= f.label :email, "メールアドレス", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.email_field :email,
+                            autofocus: true,
+                            autocomplete: "email",
+                            class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
         </div>
-      <% end %>
 
-      <div>
-        <%= f.submit "ログイン" %>
+        <div>
+          <%= f.label :password, "パスワード", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.password_field :password,
+                               autocomplete: "current-password",
+                               class: "mt-1 w-full rounded-lg bg-white px-3 py-2 text-gray-900 shadow-sm" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center gap-2">
+            <%= f.check_box :remember_me, class: "rounded border-stone-300 text-lime-900" %>
+            <%= f.label :remember_me, "ログイン状態を保持する", class: "text-sm text-gray-700" %>
+          </div>
+        <% end %>
+
+        <div>
+          <%= f.submit "ログイン",
+                       class: "w-full rounded-md bg-lime-900 px-4 py-2 text-stone-50 hover:bg-zinc-500" %>
+        </div>
       </div>
     <% end %>
-  </div>
-
-  <div>
-    <%= render "devise/shared/links" %>
   </div>
 </section>

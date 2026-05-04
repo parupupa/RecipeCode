@@ -11,10 +11,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen bg-stone-100 text-gray-900">
+  <body class="flex min-h-screen flex-col bg-stone-100 text-gray-900">
     <%= render "shared/header" %>
 
-    <main class="mx-auto w-full max-w-5xl px-4 py-6">
+    <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-6">
       <% if notice %>
         <div class="mb-4 rounded-md border border-lime-900 bg-stone-50 px-4 py-3">
           <p class="text-sm text-lime-900"><%= notice %></p>
