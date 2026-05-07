@@ -1,8 +1,8 @@
 <section class="mx-auto max-w-2xl">
   <div>
-  <h2 class="text-sm tracking-tight text-gray-700">
-    作成したレシピを表示します。
-  </h2>
+    <h2 class="text-sm tracking-tight text-gray-700">
+      作成したレシピを表示します。
+    </h2>
     <h1 class="mt-2 border-b border-stone-300 pb-3 text-2xl font-bold tracking-tight text-gray-900">
       レシピ一覧
     </h1>
@@ -17,11 +17,11 @@
           <% latest_version = recipe.latest_version %>
           <li class="border-b border-stone-200 py-4 first:pt-0 last:border-b-0 last:pb-0">
             <div class="flex items-center justify-between gap-4">
-              <div>
+              <div class="w-0 min-w-0 flex-1">
                 <h2 class="text-xl font-semibold">
                   <%= link_to recipe.title,
                       recipe_path(recipe),
-                      class: "text-gray-900 hover:text-stone-300" %>
+                      class: "block truncate text-gray-900 hover:text-stone-300" %>
                 </h2>
                 <div class="mt-2 text-xs text-gray-600">
                   <span>改良履歴：<%= recipe.recipe_versions.size %>件</span>
@@ -36,7 +36,7 @@
                   </span>
                 </div>
               </div>
-              <div class="pr-6">
+              <div class="shrink-0 pr-6">
                 <%= link_to "履歴",
                     recipe_recipe_versions_path(recipe),
                     class: "text-sm text-gray-600  hover:text-stone-300" %>
