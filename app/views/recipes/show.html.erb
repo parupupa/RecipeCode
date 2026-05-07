@@ -2,42 +2,45 @@
   <h2 class="text-sm tracking-tight text-gray-700">
     最新版のレシピを表示します。
   </h2>
-  <div class="flex justify-between items-center border-b border-stone-300 pb-3">
-    <div class="flex flex-1 items-center gap-3">
-      <h1 class="text-3xl font-bold tracking-tight">
+  <div class="border-b border-stone-300 pb-3">
+    <!-- 上段 -->
+    <div class="min-w-0">
+      <h1 class="truncate whitespace-nowrap text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
         <%= @recipe.title %>
       </h1>
-      <span class="inline-block rounded-full border border-sky-300 bg-sky-50 px-3 py-1 text-xs text-cyan-800">
+    </div>
+    <!-- 下段 -->
+    <div class="mt-3 flex items-center justify-between gap-3">
+      <span class="shrink-0 whitespace-nowrap rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs text-gray-800">
         最新版
       </span>
-    </div>
-    <%= link_to "＋ 新しいバージョンを作る",
+      <%= link_to "＋ 新しいバージョンを作る",
                   new_recipe_recipe_version_path(@recipe),
-                  class: "rounded-md border border-lime-600 bg-white px-4 py-2 text-lime-700 shadow transition hover:bg-lime-600 hover:text-white" %>
+                  class: "whitespace-nowrap rounded-md border border-lime-600 bg-white px-4 py-2 text-sm text-lime-700 shadow transition hover:bg-lime-600 hover:text-white sm:text-base" %>
+    </div>
   </div>
-  <div>
-    <%= render "latest_recipe_version", latest_recipe_version: @latest_recipe_version %>
+  <div class="mt-4">
+    <%= render "latest_recipe_version",
+               latest_recipe_version: @latest_recipe_version %>
   </div>
-  <div class="mt-5 flex justify-between items-center">
+  <div class="mt-5 flex items-center justify-between gap-3">
     <div>
       <%= link_to "レシピ一覧に戻る",
                   recipes_path,
-                  class: "rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-600 shadow-sm transition hover:border-gray-400" %>
+                  class: "whitespace-nowrap rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-600 shadow-sm transition hover:border-gray-400" %>
     </div>
-
     <div>
       <%= link_to "改良履歴を見る",
                   recipe_recipe_versions_path(@recipe),
-                  class: "rounded-md border border-lime-800 bg-white px-4 py-2 text-lime-900 shadow transition hover:bg-lime-800 hover:text-white" %>
+                  class: "whitespace-nowrap rounded-md border border-lime-600 bg-white px-4 py-2 text-lime-700 shadow transition hover:bg-lime-600 hover:text-white" %>
     </div>
   </div>
-
   <div class="mt-4">
     <%= button_to "このレシピを削除する",
                   recipe_path(@recipe),
                   method: :delete,
                   data: { turbo_confirm: "本当にこのレシピを削除しますか？" },
                   form_class: "inline-block",
-                  class: "text-sm text-gray-500 hover:text-red-700" %>
+                  class: "whitespace-nowrap text-sm text-gray-500 hover:text-red-700" %>
   </div>
 </section>
