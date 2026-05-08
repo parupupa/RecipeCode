@@ -19,7 +19,7 @@ ja:
       too_short: "は%{count}文字以上で入力してください"
       too_long: "は%{count}文字以内で入力してください"
       invalid: "は正しい形式で入力してください"
-      taken: "はすでに使用されています"
+      taken: "は使用できません"
       confirmation: "と%{attribute}の入力が一致しません"
       not_saved: "%{resource}を保存できませんでした"
 
@@ -57,5 +57,5 @@ ja:
         too_short: "は%{count}文字以上で入力してください"
         too_long: "は%{count}文字以内で入力してください"
         invalid: "は正しい形式で入力してください"
-        taken: "はすでに使用されています"
+        taken: "は使用できません"
         confirmation: "と%{attribute}の入力が一致しません"
