@@ -50,7 +50,9 @@ class RecipeVersionsController < ApplicationController
   def update
     @recipe = @recipe_version.recipe
 
-    if @recipe_version.update(recipe_version_params)
+    if @recipe_version.update(recipe_version_params_without_images)
+      attach_images_if_present
+      purge_selected_images
       redirect_to recipe_version_path(@recipe_version), notice: "改良履歴を更新しました"
     else
       render :edit, status: :unprocessable_entity
@@ -93,4 +95,30 @@ class RecipeVersionsController < ApplicationController
   def next_version_number
     @recipe.recipe_versions.maximum(:version_number).to_i + 1
   end
+
+  def recipe_version_params_without_images
+  params.require(:recipe_version).permit(
+    :version_name,
+    :ingredients,
+    :steps,
+    :memo
+  )
+  end
+
+  def attach_images_if_present
+    return if params[:recipe_version][:images].blank?
+
+    images = params[:recipe_version][:images].reject(&:blank?)
+    @recipe_version.images.attach(images) if images.present?
+  end
+
+  def purge_selected_images
+    return if params[:recipe_version][:remove_image_ids].blank?
+
+    params[:recipe_version][:remove_image_ids].each do |image_id|
+      image = @recipe_version.images.find_by(id: image_id)
+      image&.purge
+    end
+  end
+
 end
