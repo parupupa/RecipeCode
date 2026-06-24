@@ -72,6 +72,8 @@ group :development do
   gem "foreman"
 
   gem "htmlbeautifier"
+
+  gem "dotenv-rails"
 end
 
 group :test do
