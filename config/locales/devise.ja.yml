@@ -25,6 +25,7 @@ ja:
     passwords:
       send_instructions: "パスワード再設定の案内を送信しました。"
       updated: "パスワードを変更しました。"
+      send_paranoid_instructions: "パスワード再設定用のメールを送信しました。"
 
     unlocks:
       send_instructions: "ロック解除の案内を送信しました。"
