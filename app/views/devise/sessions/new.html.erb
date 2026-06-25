@@ -34,6 +34,10 @@
           <%= f.submit "ログイン",
                        class: "w-full rounded-md bg-lime-900 px-4 py-2 text-stone-50 hover:bg-zinc-500" %>
         </div>
+
+        <div>
+          <%= link_to "パスワードを忘れた方はこちら", new_user_password_path, class: "text-sm text-gray-700" %>
+        </div>
       </div>
     <% end %>
   </div>
